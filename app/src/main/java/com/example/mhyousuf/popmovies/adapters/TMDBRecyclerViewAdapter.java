@@ -19,8 +19,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by mhyousuf on 6/16/2015.
@@ -95,11 +95,11 @@ public class TMDBRecyclerViewAdapter extends RecyclerView.Adapter<TMDBRecyclerVi
 
         //Butter knife view injection
         private final View parent;
-        @InjectView(R.id.img_movie_poster)
+        @Bind(R.id.img_movie_poster)
         ImageView gridImage;
-        @InjectView(R.id.txt_movie_title)
+        @Bind(R.id.txt_movie_title)
         TextView txtMovieTitle;
-        @InjectView(R.id.txt_movie_avg)
+        @Bind(R.id.txt_movie_avg)
         TextView txtMovieAvg;
 
         //ViewHolder constructor
@@ -108,7 +108,7 @@ public class TMDBRecyclerViewAdapter extends RecyclerView.Adapter<TMDBRecyclerVi
             this.parent = view;
 
             //initialize butter knife
-            ButterKnife.inject(this, view);
+            ButterKnife.bind(this, view);
         }
 
         /**

@@ -25,8 +25,8 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * A detail actvity fragment containing a movie detail view.
@@ -44,19 +44,19 @@ public class MovieDetailActivityFragment extends Fragment {
     Result movieDetailObj;
 
     //Butter Knife View Injection
-    @InjectView(R.id.img_movie_detail_backdrop)
+    @Bind(R.id.img_movie_detail_backdrop)
     ImageView imgBackdrop;
-    @InjectView(R.id.img_detail_poster_movie)
+    @Bind(R.id.img_detail_poster_movie)
     ImageView image;
-    @InjectView(R.id.txt_movie_detail_title)
+    @Bind(R.id.txt_movie_detail_title)
     TextView txtTitle;
-    @InjectView(R.id.txt_movie_detail_date)
+    @Bind(R.id.txt_movie_detail_date)
     TextView txtDate;
-    @InjectView(R.id.txt_movie_detail_vote)
+    @Bind(R.id.txt_movie_detail_vote)
     TextView txtVote;
-    @InjectView(R.id.txt_movie_detail_synopsis)
+    @Bind(R.id.txt_movie_detail_synopsis)
     TextView txtSynopsis;
-    @InjectView(R.id.ratingBar_vote_avg)
+    @Bind(R.id.ratingBar_vote_avg)
     RatingBar ratingVoteAvg;
 
     public MovieDetailActivityFragment() {
@@ -77,7 +77,7 @@ public class MovieDetailActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_movie_detail, container, false);
 
         //provide main layout to butter knife.
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
 
         //get extras passed from main activity
         Bundle extras = getActivity().getIntent().getExtras();

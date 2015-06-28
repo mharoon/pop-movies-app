@@ -36,8 +36,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -67,19 +67,15 @@ public class MainActivityFragment extends Fragment implements TMDBRecyclerViewAd
     int selectedSortOption = SortType.MOST_POPULAR.ordinal();
 
     //Butte Knife view injection
-    @InjectView(R.id.recycler_view_grid)
+    @Bind(R.id.recycler_view_grid)
     RecyclerView gridView;
-    @InjectView(R.id.progressBar)
+    @Bind(R.id.progressBar)
     ProgressBar progressBar;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //get & set user preference
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        selectedSortOption = Integer.parseInt(prefs.getString("sort_list", "0"));
 
         //enable fragment menu item
         setHasOptionsMenu(true);
@@ -92,7 +88,7 @@ public class MainActivityFragment extends Fragment implements TMDBRecyclerViewAd
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
 
         //set different number of column for different orientation
         if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -119,7 +115,7 @@ public class MainActivityFragment extends Fragment implements TMDBRecyclerViewAd
         if(isConnected()) {
             //get and set user sort preference
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            int sortOption = Integer.parseInt(prefs.getString("sort_list", "0"));
+            int sortOption = Integer.parseInt(prefs.getString(Constants.PREF_SORT_LIST_KEY, "0"));
 
             //get data according to user sort preferences
             setCriteriaAndGetFeeds(selectedSortOption, sortOption);
@@ -299,7 +295,7 @@ public class MainActivityFragment extends Fragment implements TMDBRecyclerViewAd
             //save user sort preference to shared preferences
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("sort_list", String.valueOf(selectedSortOption)); // value to store
+            editor.putString(Constants.PREF_SORT_LIST_KEY, String.valueOf(selectedSortOption)); // value to store
             editor.apply();
 
             getMovieFeeds(pageIndex, sortedBy); //get feeds starting from first page
