@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Movies App</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="no_internet">OOPS! Check your connection</string>
+    <string name="request_time_out">Sorry! unable to process your request</string>
+
+    <!-- Common -->
+    <string name="movie_vote_avg">%1$s/10</string>
+    <!-- /Common -->
+
+    <!-- Movie Fragment Menu -->
+    <string name="action_sort">Sort</string>
+    <string name="btn_dialog_OK">OK</string>
+    <string name="btn_dialog_Cancel">Cancel</string>
+
+    <string-array name="sort_options">
+        <item>Most Popular</item>
+        <item>Highest Rated</item>
+    </string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_main">Pop Movies</string>
+    <string name="title_activity_movie_detail">Movie Details</string>
+    <!-- /Movie Fragment Menu -->
+
+
+    <!-- Movie Detail Fragment Menu -->
+    <string name="movie_detail_title_and_year">%1$s (%2$s)</string>
+    <!-- /Movie Detail Fragment -->
+
+
+
+
+</resources>

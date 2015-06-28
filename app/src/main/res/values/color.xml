@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+
+    <color name="detail_title_image_overlay">#7000</color>
+
+    <color name="material_yellow">#FFEB3B</color>
+
+    <color name="material_gery_400">#bdbdbd</color>
+    <color name="material_gery_800">#424242</color>
+
+</resources>

@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".MainActivityFragment">
+
+<!--    <GridView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="150dp"
+        android:numColumns="auto_fit"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:stretchMode="columnWidth"
+        android:drawSelectorOnTop="true" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleInverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</FrameLayout>
