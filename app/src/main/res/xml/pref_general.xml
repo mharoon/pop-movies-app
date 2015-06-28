@@ -5,7 +5,7 @@
     <ListPreference
         android:key="sort_list"
         android:title="@string/pref_sort_order"
-        android:summary="Most Popular"
+        android:summary="@string/default_sort_summary"
         android:defaultValue="0"
         android:entries="@array/pref_example_list_titles"
         android:entryValues="@array/pref_example_list_values"

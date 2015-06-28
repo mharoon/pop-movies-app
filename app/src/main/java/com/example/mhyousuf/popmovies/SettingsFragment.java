@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mhyousuf.popmovies.constants.Constants;
+
 
 /**
  * A placeholder fragment containing a simple view.
@@ -24,7 +26,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pref_general);
-        ListPreference pref = (ListPreference)findPreference("sort_list");
+        ListPreference pref = (ListPreference)findPreference(Constants.PREF_SORT_LIST_KEY);
         pref.setSummary(pref.getEntry());
 
     }

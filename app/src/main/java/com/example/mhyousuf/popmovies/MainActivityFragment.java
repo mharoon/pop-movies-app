@@ -56,7 +56,7 @@ public class MainActivityFragment extends Fragment implements TMDBRecyclerViewAd
     int previousVisibleItems, visibleItemCount, totalItemCount;
 
     int pageIndex = 1;
-    String sortedBy = Constants.SortByPopularity;
+    String sortedBy = Constants.SORT_BY_POPULARITY;
     List<Result> dataFeeds = new ArrayList<Result>();
 
     enum SortType {
@@ -143,7 +143,7 @@ public class MainActivityFragment extends Fragment implements TMDBRecyclerViewAd
                 //dialog to choose sort options
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                 dialog.setSingleChoiceItems(R.array.sort_options, selectedSortOption, null)
-                        .setTitle("Sort By")
+                        .setTitle(R.string.sort_by_dialog_title)
                         .setPositiveButton(R.string.btn_dialog_OK, dialogOkListener)
                         .setNegativeButton(R.string.btn_dialog_Cancel, dialogCancelListener)
                         .show();
@@ -283,11 +283,11 @@ public class MainActivityFragment extends Fragment implements TMDBRecyclerViewAd
             //set sort parameter based on user selection
             switch (st){
                 case HIGHEST_RATED:{
-                    sortedBy = Constants.SortByHighestRated;
+                    sortedBy = Constants.SORT_BY_VOTE_AVG;
                     break;
                 }
                 case MOST_POPULAR:{
-                    sortedBy = Constants.SortByPopularity;
+                    sortedBy = Constants.SORT_BY_POPULARITY;
                     break;
                 }
             }

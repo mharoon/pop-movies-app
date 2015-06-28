@@ -9,6 +9,8 @@
     <!-- Common -->
     <string name="movie_vote_avg">%1$s/10</string>
     <string name="movie_poster_transition_name">poster transition</string>
+    <string name="sort_by_dialog_title">Sort By</string>
+    <string name="default_sort_summary">Most Popular</string>
     <!-- /Common -->
 
     <!-- Movie Fragment Menu -->

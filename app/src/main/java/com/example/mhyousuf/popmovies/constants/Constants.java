@@ -12,8 +12,8 @@ public class Constants {
     //fetch data threshold on grid item scrolling
     public static final int ITEM_THRESHOLD = 10;
 
-    public static  final String SortByPopularity = "popularity.desc";
-    public static  final String SortByHighestRated = "vote_average.desc";
+    public static  final String SORT_BY_POPULARITY = "popularity.desc";
+    public static  final String SORT_BY_VOTE_AVG = "vote_average.desc";
 
     //Intent extra key for movie details object
     public static final String MOVIE_OBJECT_EXTRA = "MovieDetail:object";
