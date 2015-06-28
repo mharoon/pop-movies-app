@@ -17,7 +17,8 @@
             android:id="@+id/img_movie_poster"
             android:layout_width="match_parent"
             android:layout_height="@dimen/main_poster_height"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:transitionName="@string/movie_poster_transition_name"/>
 
         <LinearLayout
             android:layout_width="match_parent"

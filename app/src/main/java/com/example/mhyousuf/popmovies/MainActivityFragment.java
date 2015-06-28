@@ -246,7 +246,7 @@ public class MainActivityFragment extends Fragment implements TMDBRecyclerViewAd
         //add shared transition animation to poster image only for API level greater then equal to 21.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options =
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view.findViewById(R.id.img_movie_poster), "moviePoster");
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view.findViewById(R.id.img_movie_poster), getString(R.string.movie_poster_transition_name));
             ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
         } else {
             startActivity(intent);

@@ -116,7 +116,7 @@
                         android:id="@+id/img_detail_poster_movie"
                         android:layout_width="@dimen/detail_poster_width"
                         android:layout_height="@dimen/detail_poster_height"
-                        android:transitionName="moviePoster">
+                        android:transitionName="@string/movie_poster_transition_name">
                     </ImageView>
 
                     <TextView
