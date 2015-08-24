@@ -19,6 +19,7 @@ android {
     }
 }
 
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -29,4 +30,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:22.1.1'
     compile 'com.android.support:support-v4:22.1.1'
     compile 'com.jakewharton:butterknife:7.0.0'
+    compile 'com.viewpagerindicator:library:2.4.1'
 }

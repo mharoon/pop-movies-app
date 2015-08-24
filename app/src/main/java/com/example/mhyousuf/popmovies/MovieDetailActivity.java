@@ -12,8 +12,20 @@ public class MovieDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
-    }
+        if(savedInstanceState == null){
 
+            Bundle extras = getIntent().getExtras();
+
+            //for tablet layout only
+            MovieDetailActivityFragment movieDetailActivityFragment = new MovieDetailActivityFragment();
+            movieDetailActivityFragment.setArguments(extras);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.movie_detail_container, movieDetailActivityFragment)
+                    .commit();
+        }
+    }
 
 
     @Override

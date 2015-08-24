@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
     <string name="app_name">Movies App</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -32,6 +32,16 @@
     <!-- Movie Detail Fragment Menu -->
     <string name="movie_detail_title_and_year">%1$s (%2$s)</string>
     <!-- /Movie Detail Fragment -->
+
+    <string name="title_template_step">Step <xliff:g id="step_number">%1$d</xliff:g>: Lorem Ipsum</string>
+
+    <string name="info_activity_movie_detail">Select any movie to see its detail...!!!</string>
+
+    <string name="movie_added_to_fav">Movie added to favourite...!!!</string>
+    <string name="movie_removed_from_fav">Movie removed from favourite.</string>
+
+    <string name="youtube_vdo_url">http://www.youtube.com/watch?v=%1$s</string>
+    <string name="youtube_vdo_thumbnail_mq_url">http://img.youtube.com/vi/%1$s/mqdefault.jpg</string>
 
 
 

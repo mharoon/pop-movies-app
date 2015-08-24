@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created by mhyousuf on 6/10/2015.
  */
-public class Result{
+public class TMDBMovie {
     private static final String CDN_URL =  "http://image.tmdb.org/t/p/w185/";
     private static final String CDN_URL_BACKDROP =  "http://image.tmdb.org/t/p/w342/";
 

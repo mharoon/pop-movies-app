@@ -3,13 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context="com.example.mhyousuf.popmovies.MovieDetailActivityFragment">
 
+        <TextView
+            android:id="@+id/txt_info"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="@string/info_activity_movie_detail"/>
+
         <RelativeLayout
+            android:id="@+id/relative_layout_backdrop"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/detail_backdrop_height">
 
@@ -67,8 +80,7 @@
                             android:focusable="false"
                             android:isIndicator="true"
                             android:numStars="10"
-                            android:progressTint="@color/material_yellow"
-                            android:rating="7" />
+                            android:progressTint="@color/material_yellow" />
 
                         <TextView
                             android:id="@+id/txt_movie_detail_vote"
@@ -83,15 +95,24 @@
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/margin_5"
                     android:layout_weight="1"
-
                     android:orientation="vertical">
 
-                    <ImageView
+                    <ToggleButton
+                        android:id="@+id/toggle_movie_detail_favorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/toggle_selector"
+                        android:textOn=""
+                        android:textOff=""
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:layout_gravity="end|center"/>
+                    <!--<ImageView
                         android:id="@+id/img_movie_detail_favorite"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="end|center"
-                        android:src="@drawable/ic_favorite_border_white_36dp" />
+                        android:src="@drawable/ic_favorite_border_white_36dp" />-->
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
@@ -142,7 +163,39 @@
 
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_margin="10dp"
+            android:background="?android:attr/listDivider"/>
+
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/vp_detail_trailers"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="200dp" />
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/cpi_detail_trailer_indicator"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider"/>
+
+        <LinearLayout
+            android:id="@+id/lst_movie_detail_review"
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         </LinearLayout>
 

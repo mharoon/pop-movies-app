@@ -1,6 +1,7 @@
 package com.example.mhyousuf.popmovies.adapters;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
@@ -13,8 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mhyousuf.popmovies.MainActivityFragment;
 import com.example.mhyousuf.popmovies.R;
-import com.example.mhyousuf.popmovies.model.Result;
+import com.example.mhyousuf.popmovies.model.TMDBMovie;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -25,73 +27,79 @@ import butterknife.ButterKnife;
 /**
  * Created by mhyousuf on 6/16/2015.
  */
-public class TMDBRecyclerViewAdapter extends RecyclerView.Adapter<TMDBRecyclerViewAdapter.FeedGridRowHolder> {
-    List<Result> feeds;
+public class RecyclerViewGridAdapter extends CustomCursorAdapter<RecyclerViewGridAdapter.ViewHolder> {
+    List<TMDBMovie> feeds;
     Context mContext;
     ItemClickListener itemClickListener;
-    String LOG_TAG = TMDBRecyclerViewAdapter.class.getSimpleName();
+    String LOG_TAG = RecyclerViewGridAdapter.class.getSimpleName();
     SpannableStringBuilder sb;
 
 
     /**
      * RecyclerView adapter constructor
       * @param context activity context
-     * @param feedItemList list of result items
      * @param clickListener item click listener for recycler view
      */
-    public TMDBRecyclerViewAdapter(Context context, List<Result> feedItemList, ItemClickListener clickListener) {
-        this.feeds = feedItemList;
+    public RecyclerViewGridAdapter(Context context, ItemClickListener clickListener, Cursor c) {
+        super(c);
+
         this.mContext = context;
         this.itemClickListener = clickListener;
     }
 
     @Override
-    public FeedGridRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.grid_item, null);
-        FeedGridRowHolder mh = new FeedGridRowHolder(v);
-        return mh;
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
     }
 
     @Override
-    public void onBindViewHolder(FeedGridRowHolder feedGridRowHolder, int i) {
-        // get item object by index
-        final Result feedItem = feeds.get(i);
+    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+        final Cursor cursor = getItem(i);
 
-        final String voteAvg = Double.toString(feedItem.getVoteAverage());
+        // get item object by index
+        //final TMDBMovie feedItem = feeds.get(i);
+
+        final String voteAvg = cursor.getString(MainActivityFragment.COL_VOTE_AVERAGE); //Double.toString(feedItem.getVoteAverage());
         final int voteAvgLength = voteAvg.length();
+
+        final long movieId = cursor.getLong(MainActivityFragment.COL_MOVIE_ID);
 
         //use picasso cache for poster image
         Picasso.with(mContext)
-                .load(feedItem.getPosterPath())
-                .into(feedGridRowHolder.gridImage);
+                .load(cursor.getString(MainActivityFragment.COL_POSTER_PATH))
+                .into(viewHolder.gridImage);
 
-        feedGridRowHolder.txtMovieTitle.setText(feedItem.getTitle());
+        //viewHolder.txtMovieTitle.setText(feedItem.getTitle());
+
+        viewHolder.txtMovieTitle.setText(cursor.getString(MainActivityFragment.COL_TITLE));
 
         //change vote avg font to yellow and make it bold
         sb = new SpannableStringBuilder(voteAvg + "/10");
         sb.setSpan(new ForegroundColorSpan(Color.rgb(255, 235, 59)), 0, voteAvgLength, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        sb.setSpan( new StyleSpan(android.graphics.Typeface.BOLD), 0, voteAvgLength, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        sb.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, voteAvgLength, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 
-        feedGridRowHolder.txtMovieAvg.setText(sb);
+        viewHolder.txtMovieAvg.setText(sb);
 
-        //item click listener
-        feedGridRowHolder.setOnClickListener(new View.OnClickListener() {
+        //bind click on recycler view item
+        viewHolder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //raise item click listener event
-                itemClickListener.itemClicked(feedItem, v);
+
+                //raise custom itemClick event
+                itemClickListener.itemClicked(movieId, v);
             }
         });
-
     }
 
-    @Override
+    /*@Override
     public int getItemCount() {
         return (null != feeds ? feeds.size() : 0);
-    }
+    }*/
 
 
-    public static final class FeedGridRowHolder extends RecyclerView.ViewHolder {
+    public static final class ViewHolder extends RecyclerView.ViewHolder {
 
         //Butter knife view injection
         private final View parent;
@@ -103,26 +111,18 @@ public class TMDBRecyclerViewAdapter extends RecyclerView.Adapter<TMDBRecyclerVi
         TextView txtMovieAvg;
 
         //ViewHolder constructor
-        public FeedGridRowHolder(View view) {
+        public ViewHolder(View view) {
             super(view);
             this.parent = view;
 
             //initialize butter knife
             ButterKnife.bind(this, view);
         }
-
-        /**
-         * item click listener
-         * @param listener
-         */
-        public void setOnClickListener(View.OnClickListener listener) {
-            parent.setOnClickListener(listener);
-        }
     }
 
     //custom item click listener interface for recycler view item
     public interface ItemClickListener {
-        void itemClicked(Result feedItem, View view);
+        void itemClicked(long feedItemId, View view);
     }
 }
 

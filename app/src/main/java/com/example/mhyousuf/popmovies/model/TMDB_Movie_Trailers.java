@@ -6,38 +6,47 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by mhyousuf on 6/9/2015.
+ * Created by mhyousuf on 7/4/2015.
  */
-public class TMDBFeedsData {
-    private int page;
-    private List<Result> results = new ArrayList<Result>();
+public class TMDB_Movie_Trailers {
+
+    private int id;
+    private List<TMDB_Trailer> results = new ArrayList<TMDB_Trailer>();
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * @return The page
+     *
+     * @return
+     * The id
      */
-    public int getPage() {
-        return page;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param page The page
+     *
+     * @param id
+     * The id
      */
-    public void setPage(int page) {
-        this.page = page;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
-     * @return The results
+     *
+     * @return
+     * The results
      */
-    public List<Result> getResults() {
+    public List<TMDB_Trailer> getResults() {
         return results;
     }
 
     /**
-     * @param results The results
+     *
+     * @param results
+     * The results
      */
-    public void setResults(List<Result> results) {
+    public void setResults(List<TMDB_Trailer> results) {
         this.results = results;
     }
 
@@ -48,5 +57,4 @@ public class TMDBFeedsData {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
-
 }

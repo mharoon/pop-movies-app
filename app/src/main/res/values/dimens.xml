@@ -10,7 +10,7 @@
     <dimen name="margin_5">5dp</dimen>
     <dimen name="margin_10">10dp</dimen>
 
-    <dimen name="main_poster_height">230dp</dimen>
+    <dimen name="main_poster_height">200dp</dimen>
 
     <dimen name="detail_poster_width">100dp</dimen>
     <dimen name="detail_poster_height">150dp</dimen>

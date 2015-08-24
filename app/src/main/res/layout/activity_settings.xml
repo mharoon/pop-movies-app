@@ -1,5 +1,5 @@
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/fragment"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/fragment_grid"
     android:name="com.example.mhyousuf.popmovies.SettingsFragment"
     tools:layout="@xml/pref_general" android:layout_width="match_parent"
     android:layout_height="match_parent" />
