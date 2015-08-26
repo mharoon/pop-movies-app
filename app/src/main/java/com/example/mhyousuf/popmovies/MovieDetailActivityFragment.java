@@ -180,6 +180,12 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
     @Bind(R.id.txt_info)
     TextView txtInfo;
 
+    @Bind(R.id.txt_review_author)
+    TextView txtReviewAuthor;
+
+    @Bind(R.id.txt_review_content)
+    TextView txtReviewContent;
+
     Activity mContext = null;
 
     @Override
@@ -229,8 +235,15 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean(Constants.MOVIE_DETAIL_STATE_SAVED, true);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
 
         layoutInflater = inflater;
         View view = layoutInflater.inflate(R.layout.fragment_movie_detail, container, false);
@@ -239,6 +252,7 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
 
         //provide main layout to butter knife.
         ButterKnife.bind(this, view);
+
 
         //get values passed from activity
         Bundle extras = getArguments();
@@ -269,9 +283,10 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
 
             mIndicator.setViewPager(mPager);
 
-
-            getMovieTrailers(movieDetailId);
-            getMovieReviews(movieDetailId);
+            if (savedInstanceState == null || !savedInstanceState.containsKey(Constants.MOVIE_DETAIL_STATE_SAVED)) {
+                getMovieTrailers(movieDetailId);
+                getMovieReviews(movieDetailId);
+            }
 
         }
 
@@ -522,13 +537,15 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
             }
             case MOVIE_REVIEW_LOADER: {
 
-                lstMovieReviews.removeAllViews();
-                while (data != null && data.moveToNext()) {
+                //lstMovieReviews.removeAllViews();
+                if (data != null && data.moveToFirst()) {
 
-                    /*movieAuthor.setText(data.getString(COL_AUTHOR));
-                    movieContent.setText(data.getString(COL_CONTENT));*/
 
-                    View reviewItem = layoutInflater.inflate(R.layout.review_item, lstMovieReviews, false);
+
+                    txtReviewAuthor.setText(data.getString(COL_AUTHOR));
+                    txtReviewContent.setText(data.getString(COL_CONTENT));
+
+                    /*View reviewItem = layoutInflater.inflate(R.layout.review_item, lstMovieReviews, false);
 
                     TextView author = (TextView) reviewItem.findViewById(R.id.txt_review_author);
                     TextView content = (TextView) reviewItem.findViewById(R.id.txt_review_content);
@@ -536,7 +553,7 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
                     author.setText(data.getString(COL_AUTHOR));
                     content.setText(data.getString(COL_CONTENT));
 
-                    lstMovieReviews.addView(reviewItem);
+                    lstMovieReviews.addView(reviewItem);*/
                 }
                 break;
             }

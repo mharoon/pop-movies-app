@@ -23,4 +23,6 @@ public class Constants {
     //Intent extra key for trailer object
     public static final String TRAILER_OBJECT_EXTRA = "TMDB_Trailer:object";
 
+    public static final String MOVIE_DETAIL_STATE_SAVED = "STATE_SAVED_DETAIL";
+
 }
